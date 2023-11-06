@@ -1,0 +1,101 @@
+/******************************************************************************
+ * Gtk fixes
+ ******************************************************************************/
+
+button {
+	border-radius: 0.3125rem; /* 5*1px */
+	/* Adding padding to the top and bottom serves no useful purpose when the label will fill the button. */
+	padding: 0 0.5rem;
+	min-width: 0;
+	min-height: 0;
+}
+
+/* Gtk.Scale */
+scale {
+	padding: 0.6rem 0;
+}
+scale slider {
+	min-height: 1.2rem;
+	min-width:  1.2rem;
+}
+scale trough,
+scale highlight {
+	border-top-left-radius:      1rem;
+	border-bottom-left-radius:   1rem;
+	border-top-right-radius:     1rem;
+	border-bottom-right-radius:  1rem;
+	min-height:                0.6rem;
+}
+scale slider {
+	margin: -0.625rem;
+}
+scale image {
+	-gtk-icon-size: 0;
+}
+
+/* Gtk.Switch */
+switch {
+  border-radius: 2rem;
+  padding: 0;
+  margin: 0;
+}
+switch,
+switch > * {
+  min-height:  1.5rem;
+  min-width:   1.5rem;
+}
+switch image {
+	-gtk-icon-size: 0;
+}
+
+/******************************************************************************
+ * Fabric CSS
+ ******************************************************************************/
+
+/* Misc. simple elements */
+.fabric-subheading {
+	font-weight: 500;
+	font-size: 1.1em;
+}
+
+/* MaybeEmptybox */
+.fabric-maybe-empty-box {
+}
+
+.fabric-maybe-empty-box.-is-unconfigured {
+	border: 0.0625rem solid red;
+	background: rgba(255, 0, 0, 0.2);
+}
+
+.fabric-maybe-empty-box.-is-empty.-is-unconfigured {
+	padding: 2rem;
+}
+
+/* Header */
+.fabric-header {
+	background-color: #333333;
+	color: #ffffff;
+	border-bottom: 0.0625rem solid #000;
+	padding: 1rem 1rem;
+}
+
+.fabric-header > label {
+	font-weight: bold;
+	font-size: 1.5em;
+}
+
+.fabric-header-back-button {
+	border: unset;
+	background: unset;
+	color: inherit;
+	margin: 0;
+	margin-right: 0.4rem;
+	padding-right: 0.6rem;
+	padding-left: 0.6rem;
+	font-size: 1.5rem;
+}
+
+/* Scrolling Area */
+.fabric-scrolling-area {
+	padding: 1rem;
+}
