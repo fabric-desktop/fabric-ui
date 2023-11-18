@@ -27,6 +27,7 @@ namespace Fabric.UI {
 				halign = Gtk.Align.FILL,
 				valign = Gtk.Align.FILL
 			};
+			main_container.add_css_class("fabric-page");
 			overlay.set_child(main_container);
 
 			header.back.clicked.connect(() => {
