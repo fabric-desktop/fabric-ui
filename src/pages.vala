@@ -39,8 +39,10 @@ namespace Fabric.UI {
 				switch (keyval) {
 					case Keys.XF86Back:
 						go_back();
+						return true;
 						break;
 				}
+				return false;
 			});
 			this.add_controller(hotkeys);
 
