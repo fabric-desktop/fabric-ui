@@ -32,7 +32,9 @@ namespace Fabric.UI {
 		}
 
 		public uint pages_count {
-			get { return children_stack.length; }
+			get {
+				return children_stack.length - (queued_for_removal != null ? 1 : 0);
+			}
 		}
 
 		construct {
