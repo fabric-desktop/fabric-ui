@@ -47,6 +47,7 @@ namespace Fabric.UI {
 				halign = Gtk.Align.FILL,
 				valign = Gtk.Align.FILL
 			};
+			add_css_class("fabric-pages-container");
 			append(overlay);
 
 			children_stack = new Queue<Gtk.Widget>();
