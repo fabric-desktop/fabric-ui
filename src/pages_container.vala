@@ -175,5 +175,22 @@ namespace Fabric.UI {
 
 			return true;
 		}
+
+		/**
+		 * Replaces the current page, animating with the `push()` animation.
+		 *
+		 * It actually pushes the new page, and removes the previous page.
+		 *
+		 * This can be used to make wizard steps go between pages from a
+		 * larger list of steps, while making sure going back goes back to
+		 * the list of steps, rather than through every discrete steps.
+		 */
+		public void replace(Gtk.Widget child) {
+			if (is_blocked) {
+				return;
+			}
+			queued_for_removal = current;
+			push(child);
+		}
 	}
 }
