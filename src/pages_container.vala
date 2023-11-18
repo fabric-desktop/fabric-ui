@@ -9,7 +9,10 @@ namespace Fabric.UI {
 	public class PagesContainer : Gtk.Box {
 		// Parts of the logical pages stack management
 		private Queue<Gtk.Widget> children_stack;
-		private Gtk.Widget set_visible_target;
+		public Gtk.Widget current {
+			get;
+			private set;
+		}
 		private Gtk.Widget queued_for_removal;
 
 		// Widgets building this higher order widget
@@ -83,7 +86,7 @@ namespace Fabric.UI {
 			}
 
 			// Finally remove the stack page intended for deletion
-			if (!stack.transition_running && stack.visible_child == set_visible_target && queued_for_removal != null) {
+			if (!stack.transition_running && stack.visible_child == current && queued_for_removal != null) {
 				stack.remove(queued_for_removal);
 				queued_for_removal = null;
 			}
@@ -97,7 +100,7 @@ namespace Fabric.UI {
 				error("Attempting to set visible a child not present in the stack...");
 			}
 			stack.set_visible_child(child);
-			set_visible_target = child;
+			current = child;
 		}
 
 		/**
