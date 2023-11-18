@@ -70,6 +70,18 @@ namespace Fabric.UI {
 			base.append(scrolling_container);
 		}
 
+		public void append_static(Gtk.Widget child) {
+			base.append(child);
+		}
+
+		public void prepend_static(Gtk.Widget child) {
+			base.prepend(child);
+		}
+
+		public void remove_static(Gtk.Widget child) {
+			base.remove(child);
+		}
+
 		public new virtual void append(Gtk.Widget child) {
 			scrolling_container.append(child);
 		}
