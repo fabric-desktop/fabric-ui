@@ -26,14 +26,14 @@ namespace Fabric.UI {
 			});
 		}
 
-		public static owned string get_data_dir() {
+		public static string get_data_dir() {
 			return Path.build_filename(
 				Environment.get_user_data_dir()
 				, GLib.Application.get_default().application_id
 			);
 		}
 
-		public static owned string get_config_dir() {
+		public static string get_config_dir() {
 			return Path.build_filename(
 				Environment.get_user_config_dir()
 				, GLib.Application.get_default().application_id
@@ -43,7 +43,7 @@ namespace Fabric.UI {
 		/**
 		 * Implicitly creates the cache dir for this app, and returns the path.
 		 */
-		public static owned string get_cache_dir() {
+		public static string get_cache_dir() {
 			string path = Path.build_filename(
 				Environment.get_user_cache_dir()
 				, GLib.Application.get_default().application_id
