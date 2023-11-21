@@ -9,6 +9,7 @@ namespace Fabric.UI {
 	public class PagesContainer : Gtk.Box {
 		// Parts of the logical pages stack management
 		private Queue<Gtk.Widget> children_stack;
+		private uint replacement_adjustment = 0;
 		public Gtk.Widget current {
 			get;
 			private set;
@@ -18,6 +19,7 @@ namespace Fabric.UI {
 		// Widgets building this higher order widget
 		private Gtk.Widget blocker;
 		private Gtk.Stack stack;
+		private Gtk.Overlay layers;
 
 		// Singleton implementation
 		private PagesContainer() {}
@@ -33,7 +35,7 @@ namespace Fabric.UI {
 
 		public uint pages_count {
 			get {
-				return children_stack.length - (queued_for_removal != null ? 1 : 0);
+				return children_stack.length - replacement_adjustment;
 			}
 		}
 
@@ -92,6 +94,7 @@ namespace Fabric.UI {
 			if (!stack.transition_running && stack.visible_child == current && queued_for_removal != null) {
 				stack.remove(queued_for_removal);
 				queued_for_removal = null;
+				replacement_adjustment = 0;
 			}
 		}
 
@@ -190,6 +193,7 @@ namespace Fabric.UI {
 				return;
 			}
 			queued_for_removal = current;
+			replacement_adjustment = 1;
 			push(child);
 		}
 	}
