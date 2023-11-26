@@ -96,6 +96,10 @@ namespace Fabric.UI {
 		public new virtual void append(Gtk.Widget child) {
 			scrolling_container.append(child);
 		}
+
+		public void scroll_to_top() {
+			scrolling_container.scroll_to_top();
+		}
 	}
 
 	public class Window : Gtk.Window {
