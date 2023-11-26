@@ -45,27 +45,27 @@ namespace Fabric.UI {
 			halign = Gtk.Align.FILL;
 			valign = Gtk.Align.FILL;
 
-			var overlay = new Gtk.Overlay(){
+			layers = new Gtk.Overlay(){
 				vexpand = true,
 				hexpand = true,
 				halign = Gtk.Align.FILL,
 				valign = Gtk.Align.FILL
 			};
 			add_css_class("fabric-pages-container");
-			append(overlay);
+			append(layers);
 
 			children_stack = new Queue<Gtk.Widget>();
 
 			stack = new Gtk.Stack();
 			stack.set_transition_type(Gtk.StackTransitionType.SLIDE_LEFT_RIGHT);
-			overlay.set_child(stack);
+			layers.set_child(stack);
 
 			// Using a label as it intrinsically is drawn and can be styled.
 			// It also does not pass through click events.
 			blocker = new Gtk.Label("");
 			blocker.set_name("FabricUIBlocker");
 			blocker.visible = false;
-			overlay.add_overlay(blocker);
+			layers.add_overlay(blocker);
 
 			// Hooks stack_update_cb to important props.
 			stack.notify["transition-running"].connect(() => {
@@ -195,6 +195,20 @@ namespace Fabric.UI {
 			queued_for_removal = current;
 			replacement_adjustment = 1;
 			push(child);
+		}
+
+		/**
+		 * Adds a widget to the internal layers overlays.
+		 */
+		public void add_overlay(Gtk.Widget widget) {
+			layers.add_overlay(widget);
+		}
+
+		/**
+		 * Removes a widget to the internal layers overlays.
+		 */
+		public void remove_overlay(Gtk.Widget widget) {
+			layers.remove_overlay(widget);
 		}
 	}
 }
