@@ -3,6 +3,11 @@ namespace Fabric.UI {
 		private Gtk.ScrolledWindow area;
 		private Gtk.Box box;
 
+		public Gtk.Align viewport_valign {
+			get { return this.area.get_first_child().valign; }
+			set { this.area.get_first_child().valign = value; }
+		}
+
 		public Gtk.Adjustment vadjustment {
 			get { return this.area.vadjustment; }
 		}
