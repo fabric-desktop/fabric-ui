@@ -3,6 +3,10 @@ namespace Fabric.UI {
 		private Gtk.ScrolledWindow area;
 		private Gtk.Box box;
 
+		public Gtk.Adjustment vadjustment {
+			get { return this.area.vadjustment; }
+		}
+
 		construct {
 			this.set_layout_manager(new Gtk.BinLayout());
 			this.hexpand = true;
@@ -28,6 +32,19 @@ namespace Fabric.UI {
 
 		~ScrollingArea() {
 			this.area.unparent();
+		}
+
+		public void scroll_to_top() {
+			vadjustment.value = 0;
+		}
+		public void scroll_to_bottom() {
+			vadjustment.value = vadjustment.upper;
+		}
+		public void scroll_to_widget(Gtk.Widget widget) {
+			Graphene.Point point = {};                                
+			widget.compute_point(widget.get_parent(), point, out point);
+
+			vadjustment.value = point.y - get_height()/2;
 		}
 	}
 }
