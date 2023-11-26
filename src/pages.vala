@@ -27,7 +27,7 @@ namespace Fabric.UI {
 				halign = Gtk.Align.FILL,
 				valign = Gtk.Align.FILL
 			};
-			main_container.add_css_class("fabric-page");
+			add_css_class("fabric-page");
 			overlay.set_child(main_container);
 
 			header.back.clicked.connect(() => {
@@ -60,6 +60,14 @@ namespace Fabric.UI {
 			if (PagesContainer.instance.pages_count > 1) {
 				PagesContainer.instance.pop(this);
 			}
+		}
+
+		public new void add_css_class(string name) {
+			main_container.add_css_class(name);
+		}
+
+		public new void remove_css_class(string name) {
+			main_container.remove_css_class(name);
 		}
 	}
 
