@@ -90,6 +90,9 @@ namespace Fabric.UI {
 			base.remove(child);
 		}
 
+		/**
+		 * This is assumed, by default, to be used during construction of the page.
+		 */
 		public new virtual void append(Gtk.Widget child) {
 			scrolling_container.append(child);
 		}
