@@ -55,13 +55,8 @@ namespace Fabric.UI {
 		public Gtk.StyleProvider add_styles_from_resource(string path) {
 				var provider = new Gtk.CssProvider();
 
-				try {
-					provider.load_from_resource(path);
-					gtk_style_context_add_provider_for_display(Gdk.Display.get_default(), provider, Gtk.STYLE_PROVIDER_PRIORITY_USER);
-
-				} catch (Error e) {
-					error("Cannot load CSS stylesheet '%s'; error: %s", path, e.message);
-				}
+				provider.load_from_resource(path);
+				gtk_style_context_add_provider_for_display(Gdk.Display.get_default(), provider, Gtk.STYLE_PROVIDER_PRIORITY_USER);
 
 				return provider;
 		}
