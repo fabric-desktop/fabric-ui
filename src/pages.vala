@@ -159,7 +159,7 @@ namespace Fabric.UI {
 		// The child contains the _size_oracle_overlay
 		private Gtk.Widget _useful_child;
 
-		public Gtk.Widget child {
+		public new Gtk.Widget child {
 			get { return _useful_child; }
 			set {
 				_size_oracle_overlay.remove_overlay(_useful_child);
