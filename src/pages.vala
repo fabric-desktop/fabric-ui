@@ -5,8 +5,6 @@ namespace Fabric.UI {
 		protected Gtk.Box main_container;
 
 		construct {
-			header = new Header("(Unnamed)");
-			base.append(header);
 			orientation = Gtk.Orientation.VERTICAL;
 			vexpand = true;
 			hexpand = true;
@@ -30,10 +28,6 @@ namespace Fabric.UI {
 			add_css_class("fabric-page");
 			overlay.set_child(main_container);
 
-			header.back.clicked.connect(() => {
-				this.go_back();
-			});
-
 			var hotkeys = new Gtk.EventControllerKey();
 			hotkeys.key_pressed.connect((keyval, keycode, state) => {
 				switch (keyval) {
@@ -46,9 +40,6 @@ namespace Fabric.UI {
 			});
 			this.add_controller(hotkeys);
 
-			map.connect(() => {
-				header.back.visible = PagesContainer.instance.pages_count > 1;
-			});
 		}
 
 		public new virtual void append(Gtk.Widget child) {
@@ -68,6 +59,21 @@ namespace Fabric.UI {
 
 		public new void remove_css_class(string name) {
 			main_container.remove_css_class(name);
+		}
+
+		/**
+		 * Correctly adds and plumbs the header and its intrinsic properties in the page.
+		 */
+		public void add_header(string title) {
+			header = new Header(title);
+			base.prepend(header);
+
+			header.back.clicked.connect(() => {
+				this.go_back();
+			});
+			map.connect(() => {
+				header.back.visible = PagesContainer.instance.pages_count > 1;
+			});
 		}
 	}
 
