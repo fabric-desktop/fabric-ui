@@ -39,7 +39,7 @@ namespace Fabric.UI {
 			this.box.remove(widget);
 		}
 
-		public unowned Gtk.Widget get_first_child() {
+		public new unowned Gtk.Widget get_first_child() {
 			return this.box.get_first_child();
 		}
 
