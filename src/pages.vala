@@ -142,9 +142,14 @@ namespace Fabric.UI {
 		}
 
 		public void set_icon_from_path(string path) {
-			var regex = new Regex("\\.[^\\.]*$");
-			var icon_name = regex.replace(Path.get_basename(path), -1, 0, "");
-			set_icon_name(icon_name);
+			try {
+				var regex = new Regex("\\.[^\\.]*$");
+				var icon_name = regex.replace(Path.get_basename(path), -1, 0, "");
+				set_icon_name(icon_name);
+
+			} catch (RegexError e) {
+				print("Error %s\n", e.message);
+			}
 		}
 	}
 
