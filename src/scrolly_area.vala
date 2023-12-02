@@ -35,8 +35,17 @@ namespace Fabric.UI {
 			this.box.append(widget);
 		}
 
-		~ScrollingArea() {
+		public void remove(Gtk.Widget widget) {
+			this.box.remove(widget);
+		}
+
+		public unowned Gtk.Widget get_first_child() {
+			return this.box.get_first_child();
+		}
+
+		public override void dispose() {
 			this.area.unparent();
+			base.dispose();
 		}
 
 		public void scroll_to_top() {
