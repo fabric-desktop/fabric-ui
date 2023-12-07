@@ -17,6 +17,14 @@ namespace Fabric.UI {
 			get { return _current_dpi / 96.0; }
 		}
 
+		public static double scale_physical_to_logical(double input) {
+			return input / scale;
+		}
+
+		public static double scale_logical_to_physical(double input) {
+			return input * scale;
+		}
+
 		construct {
 			flags = ApplicationFlags.DEFAULT_FLAGS;
 
