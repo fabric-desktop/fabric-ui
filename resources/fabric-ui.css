@@ -96,6 +96,6 @@ switch image {
 }
 
 /* Scrolling Area */
-.fabric-scrolling-area {
+.fabric-scrolling-area > * > viewport {
 	padding: 1rem;
 }
